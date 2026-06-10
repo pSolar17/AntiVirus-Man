@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+Assets/
+AntiVirus Man — DEMO.rar
+AntiVirus Man - FULL.exe
+AntiVirus Man.7z
+AntiVirus Man.console.exe
+AntiVirus Man.exe
+designdoc.txt
+icon.svg
+icon.svg.import
+movie.avi

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://du2xvys42u1vb"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_4ugxf"]
+[ext_resource type="PackedScene" uid="uid://dyy72pohe8i25" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/PipeEnemy.tscn" id="2_4dn23"]
+[ext_resource type="PackedScene" uid="uid://bkdyrltywwtd0" path="res://Scenes/Objects/Enemies/Spawn/Carrier/Carrier.tscn" id="3_nmdjb"]
+
+[node name="SpawnWave7" type="Node2D"]
+script = ExtResource("1_4ugxf")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="PipeEnemy" parent="." instance=ExtResource("2_4dn23")]
+
+[node name="Carrier" parent="." instance=ExtResource("3_nmdjb")]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://pm1aai6pa52i"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_3pfqv"]
+[ext_resource type="PackedScene" uid="uid://dyy72pohe8i25" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/PipeEnemy.tscn" id="2_cidtp"]
+
+[node name="SpawnBoss4" type="Node2D"]
+script = ExtResource("1_3pfqv")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="PipeEnemy" parent="." instance=ExtResource("2_cidtp")]
+scale = Vector2(3, 3)
+spawn_count = 15
+spawn_delay = 0.1
+spawn_interval = 0.5
+v_speed = 240.0
+max_health = 750.0
+bounty = 7500
+rna_bounty = 3750
+dna_bounty = 100
+is_boss = true

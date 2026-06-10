@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxug2u2dyfs75"]
+
+[ext_resource type="Script" uid="uid://8oln8yun6u37" path="res://Scenes/Objects/Bullets/Laser/Laser.gd" id="1_jr6jo"]
+
+[node name="Laser" type="Node2D"]
+z_index = -1
+script = ExtResource("1_jr6jo")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true

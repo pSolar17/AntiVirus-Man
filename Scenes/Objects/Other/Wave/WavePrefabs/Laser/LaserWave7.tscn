@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlrya3l765b6i"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_e6e1y"]
+[ext_resource type="PackedScene" uid="uid://nbyevrt6hf0s" path="res://Scenes/Objects/Enemies/Laser/LaserEnemy/LaserEnemy.tscn" id="2_3v2gk"]
+
+[node name="LaserWave7" type="Node2D"]
+script = ExtResource("1_e6e1y")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserEnemy" parent="." instance=ExtResource("2_3v2gk")]
+base_speed = 20.0
+attack_interval = 8.0
+attack_duration = 5.0
+attack_offset = 2.0
+max_health = 75.0
+
+[node name="LaserEnemy2" parent="." instance=ExtResource("2_3v2gk")]
+position = Vector2(0, -64)
+base_speed = 20.0
+attack_interval = 8.0
+attack_duration = 5.0
+attack_offset = 1.0
+max_health = 75.0
+
+[node name="LaserEnemy3" parent="." instance=ExtResource("2_3v2gk")]
+position = Vector2(0, -128)
+base_speed = 20.0
+attack_interval = 8.0
+attack_duration = 5.0
+max_health = 75.0
+
+[node name="LaserEnemy4" parent="." instance=ExtResource("2_3v2gk")]
+position = Vector2(0, 64)
+base_speed = 20.0
+attack_interval = 8.0
+attack_duration = 5.0
+attack_offset = 3.0
+max_health = 75.0
+
+[node name="LaserEnemy5" parent="." instance=ExtResource("2_3v2gk")]
+position = Vector2(0, 128)
+base_speed = 20.0
+attack_interval = 8.0
+attack_duration = 5.0
+attack_offset = 4.0
+max_health = 75.0

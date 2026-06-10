@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://do5ui2olupw04"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_l5ivw"]
+[ext_resource type="PackedScene" uid="uid://bkdyrltywwtd0" path="res://Scenes/Objects/Enemies/Spawn/Carrier/Carrier.tscn" id="2_v0a56"]
+
+[node name="SpawnWave2" type="Node2D"]
+script = ExtResource("1_l5ivw")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Carrier" parent="." instance=ExtResource("2_v0a56")]
+
+[node name="Carrier2" parent="." instance=ExtResource("2_v0a56")]
+route = Array[Vector2]([Vector2(576, 320), Vector2(32, 320), Vector2(32, 96), Vector2(576, 96)])

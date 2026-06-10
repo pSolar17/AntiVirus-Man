@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw4fcqjtedv8k"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_1avd8"]
+[ext_resource type="PackedScene" uid="uid://nbyevrt6hf0s" path="res://Scenes/Objects/Enemies/Laser/LaserEnemy/LaserEnemy.tscn" id="2_52up1"]
+
+[node name="DemoWave2" type="Node2D"]
+script = ExtResource("1_1avd8")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserEnemy" parent="." instance=ExtResource("2_52up1")]
+position = Vector2(0, 100)
+base_speed = 50.0
+direction = Vector2(0, -1)
+attack_interval = 5.0
+attack_duration = 2.0
+
+[node name="LaserEnemy3" parent="." instance=ExtResource("2_52up1")]
+base_speed = 50.0
+direction = Vector2(0, -1)
+attack_interval = 5.0
+attack_duration = 2.0
+attack_offset = 1.0
+
+[node name="LaserEnemy5" parent="." instance=ExtResource("2_52up1")]
+position = Vector2(0, -100)
+base_speed = 50.0
+direction = Vector2(0, -1)
+attack_interval = 5.0
+attack_duration = 2.0
+attack_offset = 2.0

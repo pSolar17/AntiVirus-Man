@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b22wr2tf3epa5"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_v2vtr"]
+[ext_resource type="PackedScene" uid="uid://nbyevrt6hf0s" path="res://Scenes/Objects/Enemies/Laser/LaserEnemy/LaserEnemy.tscn" id="2_hl4vj"]
+[ext_resource type="PackedScene" uid="uid://baje4rc7ml3a4" path="res://Scenes/Objects/Enemies/Laser/Laser Vice/LaserVice.tscn" id="3_pw25g"]
+[ext_resource type="PackedScene" uid="uid://bt1bj6gm1va65" path="res://Scenes/Objects/Enemies/Laser/LaserPuffer/LaserPuffer.tscn" id="4_2pipe"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="5_vbjhw"]
+
+[node name="LaserWave5" type="Node2D"]
+script = ExtResource("1_v2vtr")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserEnemy" parent="." instance=ExtResource("2_hl4vj")]
+attack_duration = 0.5
+
+[node name="LaserViceEnemy" parent="." node_paths=PackedStringArray("pair") instance=ExtResource("3_pw25g")]
+position = Vector2(0, -64)
+pair = NodePath("../LaserViceEnemy2")
+attack_interval = 2.0
+
+[node name="LaserViceEnemy2" parent="." instance=ExtResource("3_pw25g")]
+position = Vector2(0, 64)
+
+[node name="LaserPuffer" parent="." instance=ExtResource("4_2pipe")]
+laser_duration = 0.5
+
+[node name="LaserSpinner" parent="." instance=ExtResource("5_vbjhw")]
+attack_duration = 16.0

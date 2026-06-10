@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtxpv10ferfit"]
+
+[ext_resource type="Script" uid="uid://dsq3feib0ddtm" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.gd" id="1_ylftd"]
+[ext_resource type="Texture2D" uid="uid://w0p3gmuakml6" path="res://Assets/Sprites/puffer1.png" id="2_1526p"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_ddb2j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_ddb2j")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddb2j"]
+size = Vector2(32, 32)
+
+[node name="Puffer" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_ylftd")
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+texture = ExtResource("2_1526p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ddb2j")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_ddb2j")

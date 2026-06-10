@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwfk2qf5s8ad"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_7shky"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="2_7u40s"]
+
+[node name="TestWave1" type="Node2D"]
+script = ExtResource("1_7shky")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Puffer" parent="." instance=ExtResource("2_7u40s")]
+position = Vector2(0, -64)
+base_speed = 120.0
+
+[node name="Puffer2" parent="." instance=ExtResource("2_7u40s")]
+base_speed = 120.0
+
+[node name="Puffer3" parent="." instance=ExtResource("2_7u40s")]
+position = Vector2(0, 64)
+base_speed = 120.0

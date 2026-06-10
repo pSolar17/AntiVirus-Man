@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca1lilkmcvchi"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_pii1y"]
+[ext_resource type="PackedScene" uid="uid://bvvq0ru6d4pe2" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunEnemy.tscn" id="2_3md48"]
+
+[node name="SpawnWave3" type="Node2D"]
+script = ExtResource("1_pii1y")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="SunEnemy" parent="." instance=ExtResource("2_3md48")]

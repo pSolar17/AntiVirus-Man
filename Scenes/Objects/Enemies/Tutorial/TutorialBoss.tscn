@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://coqliy8a0vk5n"]
+
+[ext_resource type="Script" uid="uid://d4gbbllpgvmsj" path="res://Scenes/Objects/Enemies/Tutorial/TutorialBoss.gd" id="1_fvbhb"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_a3k27"]
+[ext_resource type="Texture2D" uid="uid://cr6l7k35q5l1b" path="res://Assets/Sprites/Snezhik.png" id="3_dsmv7"]
+[ext_resource type="Theme" uid="uid://cnib22hkf1qb1" path="res://Assets/Themes/MissionUITheme.tres" id="4_a3k27"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_a3k27")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08ok4"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sghl"]
+size = Vector2(96, 96)
+
+[node name="Snezhik" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_fvbhb")
+max_health = 300.0
+bounty = 1500
+rna_bounty = 500
+dna_bounty = 100
+is_boss = true
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+texture = ExtResource("3_dsmv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_08ok4")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_7sghl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 60.0
+offset_right = 640.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_top = 68.0
+offset_right = 640.0
+offset_bottom = 91.0
+theme = ExtResource("4_a3k27")
+text = "DEFEAT THIS BOSS TO FINISH THE TUTORIAL!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

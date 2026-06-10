@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://byqy8y01g4chh"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_yyp22"]
+[ext_resource type="PackedScene" uid="uid://bfc6v8c0d3skc" path="res://Scenes/Objects/Enemies/Bullet/The Shroom/TheShroom.tscn" id="2_jjlx8"]
+
+[node name="BulletBoss1" type="Node2D"]
+script = ExtResource("1_yyp22")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="TheShroom" parent="." instance=ExtResource("2_jjlx8")]
+scale = Vector2(3, 3)
+deceleration = -45.0
+period = 4.0
+spore_amount = 3
+spore_lifetime = 12.0
+max_health = 900.0
+bounty = 5000
+rna_bounty = 2500
+dna_bounty = 100
+contact_damage = 50.0
+is_boss = true

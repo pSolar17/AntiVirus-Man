@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://br17uroqmmyey"]
+
+[ext_resource type="Script" uid="uid://bbebk6vkgtp6r" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/CoinFlipper.gd" id="1_w4sfg"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_r8mgj"]
+[ext_resource type="Texture2D" uid="uid://dgwgglk2jgjyg" path="res://Assets/Sprites/coinflipper.png" id="3_w4sfg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_r8mgj")
+shader_parameter/enabled = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8mgj"]
+atlas = ExtResource("3_w4sfg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g348y"]
+atlas = ExtResource("3_w4sfg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7bvl"]
+atlas = ExtResource("3_w4sfg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6i5e"]
+atlas = ExtResource("3_w4sfg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgadj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8mgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g348y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7bvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6i5e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4sfg"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8mgj"]
+size = Vector2(24, 24)
+
+[node name="CoinFlipper" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_w4sfg")
+max_health = 1.0
+bounty = 50
+rna_bounty = 0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+sprite_frames = SubResource("SpriteFrames_pgadj")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w4sfg")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_r8mgj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(3.8147e-06, 7.62939e-06)
+rect = Rect2(-128, -128, 256, 256)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

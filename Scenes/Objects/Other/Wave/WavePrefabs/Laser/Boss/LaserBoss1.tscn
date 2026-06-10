@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://csucmvjq5nux1"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_d5qbm"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="2_36cmr"]
+
+[node name="DemoWaveBoss1" type="Node2D"]
+script = ExtResource("1_d5qbm")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserSpinner" parent="." instance=ExtResource("2_36cmr")]
+scale = Vector2(2, 2)
+attack_duration = 6.0
+positions = Array[Vector2]([Vector2(320, 210)])
+max_health = 500.0
+bounty = 5000
+is_boss = true

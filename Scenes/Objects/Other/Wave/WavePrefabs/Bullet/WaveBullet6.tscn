@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0syhqh2vkuk"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_8wako"]
+[ext_resource type="PackedScene" uid="uid://bfc6v8c0d3skc" path="res://Scenes/Objects/Enemies/Bullet/The Shroom/TheShroom.tscn" id="2_ctq4m"]
+
+[node name="WaveBullet6" type="Node2D"]
+script = ExtResource("1_8wako")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="TheShroom" parent="." instance=ExtResource("2_ctq4m")]
+position = Vector2(0, -64)
+
+[node name="TheShroom2" parent="." instance=ExtResource("2_ctq4m")]
+position = Vector2(0, 64)

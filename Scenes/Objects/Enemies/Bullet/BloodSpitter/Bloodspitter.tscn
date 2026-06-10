@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bthc83vpt1pxh"]
+
+[ext_resource type="Script" uid="uid://66xmiieg7f5i" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.gd" id="1_pihwd"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_1jh82"]
+[ext_resource type="Texture2D" uid="uid://qcr38kj0scjj" path="res://Assets/Sprites/bloodspitter.png" id="2_p5era"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_d3pqs"]
+[ext_resource type="PackedScene" uid="uid://cc23f6lqen2lm" path="res://Scenes/Objects/Bullets/EnemyBullet.tscn" id="5_hh5y5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3pqs"]
+resource_local_to_scene = true
+shader = ExtResource("2_1jh82")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5era"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pihwd"]
+size = Vector2(32, 32)
+
+[node name="Bloodspitter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_pihwd")
+max_health = 30.0
+bounty = 50
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_d3pqs")
+texture = ExtResource("2_p5era")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p5era")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_pihwd")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_d3pqs")
+scene = ExtResource("5_hh5y5")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CircleTimer" type="Timer" parent="."]

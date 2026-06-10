@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpmyqp80kr4lo"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_6cd3s"]
+[ext_resource type="PackedScene" uid="uid://baje4rc7ml3a4" path="res://Scenes/Objects/Enemies/Laser/Laser Vice/LaserVice.tscn" id="2_t8hif"]
+[ext_resource type="PackedScene" uid="uid://bvvq0ru6d4pe2" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunEnemy.tscn" id="3_hudy7"]
+
+[node name="Final4" type="Node2D"]
+script = ExtResource("1_6cd3s")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserViceEnemy" parent="." node_paths=PackedStringArray("pair") instance=ExtResource("2_t8hif")]
+position = Vector2(0, -32)
+pair = NodePath("../LaserViceEnemy2")
+
+[node name="LaserViceEnemy2" parent="." instance=ExtResource("2_t8hif")]
+position = Vector2(0, 32)
+
+[node name="SunEnemy" parent="." instance=ExtResource("3_hudy7")]

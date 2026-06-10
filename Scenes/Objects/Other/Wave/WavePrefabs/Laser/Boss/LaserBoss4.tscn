@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnbfqsntbwvc0"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_31lqi"]
+[ext_resource type="PackedScene" uid="uid://bt1bj6gm1va65" path="res://Scenes/Objects/Enemies/Laser/LaserPuffer/LaserPuffer.tscn" id="2_iaun5"]
+
+[node name="LaserBoss4" type="Node2D"]
+script = ExtResource("1_31lqi")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserPuffer" parent="." instance=ExtResource("2_iaun5")]
+scale = Vector2(3, 3)
+base_speed = 120.0
+initial_direction = Vector2(-1, -1)
+laser_duration = 0.5
+max_health = 750.0
+bounty = 4000
+rna_bounty = 2000
+dna_bounty = 100
+contact_damage = 50.0
+is_boss = true

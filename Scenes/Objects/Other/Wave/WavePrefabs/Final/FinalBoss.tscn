@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://qm1m0h2bsw2b"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_8ol6n"]
+[ext_resource type="PackedScene" uid="uid://bu7j1peckaomw" path="res://Scenes/Objects/Enemies/Final/Cell of Origin/CellOfOrigin.tscn" id="2_i7no1"]
+
+[node name="FinalBoss" type="Node2D"]
+script = ExtResource("1_8ol6n")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="CellOfOrigin" parent="." instance=ExtResource("2_i7no1")]

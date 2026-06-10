@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwbakfh4oo4y"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_ajh7h"]
+[ext_resource type="PackedScene" uid="uid://nbyevrt6hf0s" path="res://Scenes/Objects/Enemies/Laser/LaserEnemy/LaserEnemy.tscn" id="2_f2ky6"]
+
+[node name="LaserBoss3" type="Node2D"]
+script = ExtResource("1_ajh7h")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserEnemy" parent="." instance=ExtResource("2_f2ky6")]
+scale = Vector2(3, 3)
+base_speed = 180.0
+desired_x = 540.0
+max_health = 650.0
+bounty = 3500
+rna_bounty = 1250
+dna_bounty = 100
+contact_damage = 50.0
+is_boss = true

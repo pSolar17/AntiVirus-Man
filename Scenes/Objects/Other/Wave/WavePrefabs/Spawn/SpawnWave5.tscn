@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://gw3blm0w4ace"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_pip0n"]
+[ext_resource type="PackedScene" uid="uid://bkdyrltywwtd0" path="res://Scenes/Objects/Enemies/Spawn/Carrier/Carrier.tscn" id="2_ng8hv"]
+[ext_resource type="PackedScene" uid="uid://d03egj18wrjvp" path="res://Scenes/Objects/Enemies/Spawn/SplitterCell/SplitterCell.tscn" id="3_8pu50"]
+
+[node name="SpawnWave5" type="Node2D"]
+script = ExtResource("1_pip0n")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Carrier" parent="." instance=ExtResource("2_ng8hv")]
+position = Vector2(0, -64)
+
+[node name="SplitterCell" parent="." instance=ExtResource("3_8pu50")]
+position = Vector2(0, 64)

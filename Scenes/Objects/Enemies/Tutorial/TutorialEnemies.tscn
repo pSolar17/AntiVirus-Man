@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5lodka5kba65"]
+
+[ext_resource type="Theme" uid="uid://cnib22hkf1qb1" path="res://Assets/Themes/MissionUITheme.tres" id="1_cg33q"]
+
+[sub_resource type="GDScript" id="GDScript_cogs2"]
+script/source = "extends Enemy
+
+func _ready() -> void:
+	await get_tree().create_timer(5.0).timeout
+	die()
+
+func _physics_process(delta: float) -> void:
+	pass
+"
+
+[node name="TutorialEnemies" type="CharacterBody2D"]
+script = SubResource("GDScript_cogs2")
+bounty = 0
+rna_bounty = 0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_cg33q")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 352.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 16
+text = "DEFEAT ENEMIES TO ADVANCE!"
+horizontal_alignment = 1
+vertical_alignment = 1

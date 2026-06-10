@@ -1,0 +1,339 @@
+[gd_scene load_steps=14 format=3 uid="uid://sec81kkqyf0"]
+
+[ext_resource type="Script" uid="uid://cucpwiequs827" path="res://Scenes/Levels/Menus/StrainMenu.gd" id="1_ad830"]
+[ext_resource type="Theme" uid="uid://cnib22hkf1qb1" path="res://Assets/Themes/MissionUITheme.tres" id="1_fnugo"]
+[ext_resource type="Texture2D" uid="uid://balqjo04hgwhf" path="res://Assets/Sprites/dna_large.png" id="3_pmpwy"]
+[ext_resource type="AudioStream" uid="uid://b8sdih2u0h805" path="res://Assets/Audio/Sounds/Select.wav" id="4_wqat5"]
+[ext_resource type="AudioStream" uid="uid://ckvn7mtdeya5m" path="res://Assets/Audio/Sounds/Accept.wav" id="5_xte4o"]
+[ext_resource type="AudioStream" uid="uid://bp5phfxfnq157" path="res://Assets/Audio/Sounds/Recycle.wav" id="7_hxi4o"]
+[ext_resource type="AudioStream" uid="uid://fgn5htmh7xh5" path="res://Assets/Audio/Music/Lab.mp3" id="8_5dg3s"]
+[ext_resource type="AudioStream" uid="uid://dvf0kbdqt3x3o" path="res://Assets/Audio/Sounds/Upgrade.wav" id="8_rv2pk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmpwy"]
+atlas = ExtResource("3_pmpwy")
+region = Rect2(0, 0, 0, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqat5"]
+atlas = ExtResource("3_pmpwy")
+region = Rect2(0, 32, 0, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkwe3"]
+atlas = ExtResource("3_pmpwy")
+region = Rect2(0, 64, 0, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xte4o"]
+atlas = ExtResource("3_pmpwy")
+region = Rect2(0, 96, 0, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxi4o"]
+atlas = ExtResource("3_pmpwy")
+region = Rect2(0, 128, 0, 32)
+
+[node name="StrainMenu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_ad830")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("1_fnugo")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 24
+text = "LABORATORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RNALabel" type="Label" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 16
+text = "RNA"
+vertical_alignment = 1
+
+[node name="DNALabel" type="Label" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 16
+text = "DNA"
+vertical_alignment = 1
+
+[node name="StrainInfoControl" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = 608.0
+offset_bottom = 352.0
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/UI/StrainInfoControl"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 16
+text = "VIRUS NAME"
+
+[node name="PositiveEffectLabel" type="Label" parent="CanvasLayer/UI/StrainInfoControl"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 168.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.317647, 0.635294, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "POSITIVE EFFECT"
+
+[node name="NegativeEffectLabel" type="Label" parent="CanvasLayer/UI/StrainInfoControl"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 168.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.698039, 0.0627451, 0.188235, 1)
+text = "NEGATIVE EFFECT"
+
+[node name="SynthesizeButton" type="Button" parent="CanvasLayer/UI/StrainInfoControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 16.0
+offset_right = 419.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath("../UpgradeButton")
+focus_neighbor_top = NodePath("../RecombineButton")
+focus_neighbor_right = NodePath("../UpgradeButton")
+focus_neighbor_bottom = NodePath("../RecombineButton")
+text = "SYNTHESIZE"
+flat = true
+alignment = 0
+
+[node name="RecombineButton" type="Button" parent="CanvasLayer/UI/StrainInfoControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 60.0
+offset_right = 408.0
+offset_bottom = 84.0
+focus_neighbor_left = NodePath("../RecycleButton")
+focus_neighbor_top = NodePath("../SynthesizeButton")
+focus_neighbor_right = NodePath("../RecycleButton")
+focus_neighbor_bottom = NodePath("../SynthesizeButton")
+disabled = true
+text = "RECOMBINE"
+flat = true
+alignment = 0
+
+[node name="UpgradeButton" type="Button" parent="CanvasLayer/UI/StrainInfoControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 456.0
+offset_top = 16.0
+offset_right = 560.0
+offset_bottom = 40.0
+focus_neighbor_left = NodePath("../SynthesizeButton")
+focus_neighbor_top = NodePath("../RecycleButton")
+focus_neighbor_right = NodePath("../SynthesizeButton")
+focus_neighbor_bottom = NodePath("../RecycleButton")
+text = "UPGRADE "
+flat = true
+alignment = 0
+
+[node name="RecycleButton" type="Button" parent="CanvasLayer/UI/StrainInfoControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 456.0
+offset_top = 60.0
+offset_right = 560.0
+offset_bottom = 84.0
+focus_neighbor_left = NodePath("../RecombineButton")
+focus_neighbor_top = NodePath("../UpgradeButton")
+focus_neighbor_right = NodePath("../RecombineButton")
+focus_neighbor_bottom = NodePath("../UpgradeButton")
+text = "RECYCLE"
+flat = true
+alignment = 0
+
+[node name="ActionInfoLabel" type="RichTextLabel" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 352.0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 256.0
+theme_override_constants/line_separation = 4
+text = "ACTION DESCRIPTION"
+scroll_active = false
+
+[node name="Virus1Button" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 336.0
+offset_bottom = 96.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Virus5Button")
+focus_neighbor_right = NodePath("../MissionStartButton")
+focus_neighbor_bottom = NodePath("../Virus2Button")
+focus_next = NodePath("../Virus2Button")
+focus_previous = NodePath("../Virus5Button")
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/Virus1Button"]
+layout_mode = 0
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_pmpwy")
+
+[node name="Virus2Button" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 96.0
+offset_right = 336.0
+offset_bottom = 128.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Virus1Button")
+focus_neighbor_right = NodePath("../MissionStartButton")
+focus_neighbor_bottom = NodePath("../Virus3Button")
+focus_next = NodePath("../Virus3Button")
+focus_previous = NodePath("../Virus1Button")
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/Virus2Button"]
+layout_mode = 0
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_wqat5")
+
+[node name="Virus3Button" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 128.0
+offset_right = 336.0
+offset_bottom = 160.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Virus2Button")
+focus_neighbor_right = NodePath("../MissionStartButton")
+focus_neighbor_bottom = NodePath("../Virus4Button")
+focus_next = NodePath("../Virus4Button")
+focus_previous = NodePath("../Virus2Button")
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/Virus3Button"]
+layout_mode = 0
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_rkwe3")
+
+[node name="Virus4Button" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 160.0
+offset_right = 336.0
+offset_bottom = 192.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Virus3Button")
+focus_neighbor_right = NodePath("../MissionStartButton")
+focus_neighbor_bottom = NodePath("../Virus5Button")
+focus_next = NodePath("../Virus5Button")
+focus_previous = NodePath("../Virus3Button")
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/Virus4Button"]
+layout_mode = 0
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_xte4o")
+
+[node name="Virus5Button" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 192.0
+offset_right = 336.0
+offset_bottom = 224.0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Virus4Button")
+focus_neighbor_right = NodePath("../MissionStartButton")
+focus_neighbor_bottom = NodePath("../Virus1Button")
+focus_next = NodePath("../Virus1Button")
+focus_previous = NodePath("../Virus4Button")
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/Virus5Button"]
+layout_mode = 0
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_hxi4o")
+
+[node name="MissionStartButton" type="Button" parent="CanvasLayer/UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 452.0
+offset_top = 68.0
+offset_right = 634.0
+offset_bottom = 92.0
+focus_neighbor_left = NodePath("../Virus1Button")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+text = "MISSION START!"
+flat = true
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wqat5")
+volume_db = -15.0
+
+[node name="AcceptSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xte4o")
+volume_db = -15.0
+
+[node name="SynthesizeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hxi4o")
+volume_db = -15.0
+
+[node name="RecycleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hxi4o")
+volume_db = -15.0
+
+[node name="UpgradeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rv2pk")
+volume_db = -15.0
+
+[node name="LabMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5dg3s")
+autoplay = true

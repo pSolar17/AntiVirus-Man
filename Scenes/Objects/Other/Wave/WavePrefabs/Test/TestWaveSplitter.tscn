@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bda0pcdsk5vyk"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_3vux7"]
+[ext_resource type="PackedScene" uid="uid://d03egj18wrjvp" path="res://Scenes/Objects/Enemies/Spawn/SplitterCell/SplitterCell.tscn" id="2_mknbj"]
+
+[node name="TestSceneSplitter" type="Node2D"]
+script = ExtResource("1_3vux7")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="SplitterCell" parent="." instance=ExtResource("2_mknbj")]
+position = Vector2(0, 96)
+
+[node name="SplitterCell2" parent="." instance=ExtResource("2_mknbj")]
+position = Vector2(0, -96)
+split_count = 2

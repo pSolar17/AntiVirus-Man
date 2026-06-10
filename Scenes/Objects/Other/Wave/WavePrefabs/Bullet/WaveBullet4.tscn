@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8gu2rgew1k4d"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_pmapc"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="2_jb144"]
+[ext_resource type="PackedScene" uid="uid://bthc83vpt1pxh" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.tscn" id="3_ukcui"]
+
+[node name="DemoWave1_1" type="Node2D"]
+script = ExtResource("1_pmapc")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Puffer" parent="." instance=ExtResource("2_jb144")]
+position = Vector2(0, -64)
+initial_direction = Vector2(-1, 1)
+
+[node name="Bloodspitter" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, -64)
+spin_target = NodePath("../Puffer")
+spin_interval = 3.0
+spin_radius = 96.0
+
+[node name="Bloodspitter2" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, -64)
+spin_target = NodePath("../Puffer")
+spin_interval = 3.0
+spin_radius = 96.0
+spin_offset = 1.0
+
+[node name="Bloodspitter3" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, -64)
+spin_target = NodePath("../Puffer")
+spin_interval = 3.0
+spin_radius = 96.0
+spin_offset = 2.0
+
+[node name="Puffer2" parent="." instance=ExtResource("2_jb144")]
+position = Vector2(0, 64)
+initial_direction = Vector2(-1, 1)
+
+[node name="Bloodspitter4" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, 64)
+spin_target = NodePath("../Puffer2")
+spin_interval = 3.0
+spin_radius = 96.0
+spin_offset = 0.5
+
+[node name="Bloodspitter5" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, 64)
+spin_target = NodePath("../Puffer2")
+spin_interval = 3.0
+spin_radius = 96.0
+spin_offset = 1.5
+
+[node name="Bloodspitter6" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_ukcui")]
+position = Vector2(36, 64)
+spin_target = NodePath("../Puffer2")
+spin_interval = 3.0
+spin_radius = 96.0
+spin_offset = 2.5

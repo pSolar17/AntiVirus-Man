@@ -1,0 +1,195 @@
+[gd_scene load_steps=22 format=3 uid="uid://bu7j1peckaomw"]
+
+[ext_resource type="Texture2D" uid="uid://buvrxxqveaoo1" path="res://Assets/Sprites/OriginCell1.png" id="2_d45dr"]
+[ext_resource type="Script" uid="uid://bwa4ix5q7fwfd" path="res://Scenes/Objects/Enemies/Enemy.gd" id="2_eg2sh"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_pnyok"]
+[ext_resource type="Texture2D" uid="uid://brvby7gsfwp1h" path="res://Assets/Sprites/OriginCellCore.png" id="4_wp504"]
+[ext_resource type="Texture2D" uid="uid://pp5pwrrtts3m" path="res://Assets/Sprites/OriginCellFinal.png" id="5_1eww1"]
+[ext_resource type="Script" uid="uid://l6hgp3pjaph3" path="res://Scenes/Objects/Enemies/Final/Cell of Origin/CellOfOriginEye.gd" id="5_rspev"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="7_hu8lf"]
+[ext_resource type="PackedScene" uid="uid://bxug2u2dyfs75" path="res://Scenes/Objects/Bullets/Laser/Laser.tscn" id="8_i7j65"]
+[ext_resource type="PackedScene" uid="uid://cc23f6lqen2lm" path="res://Scenes/Objects/Bullets/EnemyBullet.tscn" id="9_dujh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hu8lf"]
+shader = ExtResource("2_pnyok")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d45dr"]
+size = Vector2(192, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg2sh"]
+size = Vector2(192, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7j65"]
+shader = ExtResource("2_pnyok")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp504"]
+size = Vector2(88, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1eww1"]
+size = Vector2(88, 92)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dujh4"]
+shader = ExtResource("2_pnyok")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rspev"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga1wf"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_v5x0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dujh4"]
+resource_name = "enter"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(832, 210), Vector2(512, 210)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48pta"]
+_data = {
+&"RESET": SubResource("Animation_v5x0e"),
+&"enter": SubResource("Animation_dujh4")
+}
+
+[node name="CellOfOrigin" type="Node2D"]
+
+[node name="Shell" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("2_eg2sh")
+max_health = 2000.0
+bounty = 0
+rna_bounty = 0
+contact_damage = 100.0
+is_boss = true
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="Shell"]
+material = SubResource("ShaderMaterial_hu8lf")
+scale = Vector2(2, 2)
+texture = ExtResource("2_d45dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shell"]
+shape = SubResource("RectangleShape2D_d45dr")
+
+[node name="EnemyHitbox" type="Area2D" parent="Shell"]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shell/EnemyHitbox"]
+shape = SubResource("RectangleShape2D_eg2sh")
+
+[node name="Core" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("2_eg2sh")
+max_health = 1000.0
+bounty = 0
+rna_bounty = 0
+contact_damage = 150.0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="Core"]
+material = SubResource("ShaderMaterial_i7j65")
+scale = Vector2(2, 2)
+texture = ExtResource("4_wp504")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core"]
+position = Vector2(-20, -2)
+shape = SubResource("RectangleShape2D_wp504")
+
+[node name="EnemyHitbox" type="Area2D" parent="Core"]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Core/EnemyHitbox"]
+position = Vector2(-20, -2)
+shape = SubResource("RectangleShape2D_1eww1")
+
+[node name="Eye" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shell", "core")]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("5_rspev")
+shell = NodePath("../Shell")
+core = NodePath("../Core")
+max_health = 500.0
+bounty = 25000
+rna_bounty = 10000
+dna_bounty = 500
+contact_damage = 100.0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="Eye"]
+material = SubResource("ShaderMaterial_dujh4")
+scale = Vector2(2, 2)
+texture = ExtResource("5_1eww1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eye"]
+shape = SubResource("RectangleShape2D_rspev")
+
+[node name="EnemyHitbox" type="Area2D" parent="Eye"]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eye/EnemyHitbox"]
+shape = SubResource("RectangleShape2D_ga1wf")
+
+[node name="Spawner" type="Node2D" parent="Eye"]
+position = Vector2(0, 64)
+script = ExtResource("7_hu8lf")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="Spawner2" type="Node2D" parent="Eye"]
+position = Vector2(0, -64)
+script = ExtResource("7_hu8lf")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="LaserWallSpawner" type="Node2D" parent="Eye"]
+position = Vector2(0, -128)
+script = ExtResource("7_hu8lf")
+scene = ExtResource("8_i7j65")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="BulletSpawner" type="Node2D" parent="Eye"]
+script = ExtResource("7_hu8lf")
+scene = ExtResource("9_dujh4")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="AttackTimer" type="Timer" parent="Eye"]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_48pta")
+}
+autoplay = "enter"
+
+[connection signal="timeout" from="Eye/AttackTimer" to="Eye" method="_on_attack_timer_timeout"]

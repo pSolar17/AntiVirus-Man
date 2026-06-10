@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://d03egj18wrjvp"]
+
+[ext_resource type="Script" uid="uid://dft34ydsw1cv" path="res://Scenes/Objects/Enemies/Spawn/SplitterCell/SplitterCell.gd" id="1_5ox7u"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_8t7cr"]
+[ext_resource type="Texture2D" uid="uid://xmysy7lwjs38" path="res://Assets/Sprites/splittercell.png" id="3_8t7cr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx2um"]
+resource_local_to_scene = true
+shader = ExtResource("2_8t7cr")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t7cr"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lgt6"]
+size = Vector2(32, 32)
+
+[node name="SplitterCell" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 266
+script = ExtResource("1_5ox7u")
+max_velocity = 80.0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bx2um")
+texture = ExtResource("3_8t7cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8t7cr")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_6lgt6")

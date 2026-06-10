@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c68e0yrjc0cwi"]
+
+[ext_resource type="Script" uid="uid://2jt45tasui2b" path="res://Scenes/Objects/Enemies/Final/The Shield/TheShield.gd" id="1_yofko"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_0yqpg"]
+[ext_resource type="Texture2D" uid="uid://vd01kyg4yjhd" path="res://Assets/Sprites/TheShield.png" id="3_yofko"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_7np1q"]
+[ext_resource type="PackedScene" uid="uid://cc23f6lqen2lm" path="res://Scenes/Objects/Bullets/EnemyBullet.tscn" id="5_054l0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_0yqpg")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7np1q"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_054l0"]
+size = Vector2(32, 32)
+
+[node name="TheShield" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_yofko")
+max_health = 80.0
+bounty = 500
+rna_bounty = 500
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+texture = ExtResource("3_yofko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7np1q")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_054l0")
+
+[node name="CircleTimer" type="Timer" parent="."]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_7np1q")
+scene = ExtResource("5_054l0")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ubuv0eqw3myp"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_ntj5t"]
+[ext_resource type="PackedScene" uid="uid://baje4rc7ml3a4" path="res://Scenes/Objects/Enemies/Laser/Laser Vice/LaserVice.tscn" id="2_n32jd"]
+
+[node name="LaserBoss2" type="Node2D"]
+script = ExtResource("1_ntj5t")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserViceEnemy" parent="." node_paths=PackedStringArray("pair") instance=ExtResource("2_n32jd")]
+position = Vector2(0, -96)
+scale = Vector2(2, 2)
+pair = NodePath("../LaserViceEnemy2")
+laser_length_min = 7
+attack_interval = 0.0
+post_attack_delay = 0.5
+laser_velocity = Vector2(-120, 0)
+max_health = 240.0
+bounty = 1250
+rna_bounty = 750
+dna_bounty = 50
+is_boss = true
+
+[node name="LaserViceEnemy2" parent="." instance=ExtResource("2_n32jd")]
+position = Vector2(0, 96)
+scale = Vector2(2, 2)
+upper = false
+max_health = 240.0
+bounty = 1250
+rna_bounty = 750
+dna_bounty = 50
+is_boss = true

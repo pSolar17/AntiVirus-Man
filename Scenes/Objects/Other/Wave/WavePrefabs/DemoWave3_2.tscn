@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnuk312nmrvdd"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_xwose"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="2_lafgq"]
+[ext_resource type="PackedScene" uid="uid://nbyevrt6hf0s" path="res://Scenes/Objects/Enemies/Laser/LaserEnemy/LaserEnemy.tscn" id="3_yfrw0"]
+
+[node name="TestWave" type="Node2D"]
+script = ExtResource("1_xwose")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserSpinner" parent="." instance=ExtResource("2_lafgq")]
+positions = Array[Vector2]([Vector2(384, 210), Vector2(256, 210), Vector2(128, 210)])
+
+[node name="LaserEnemy" parent="." instance=ExtResource("3_yfrw0")]
+position = Vector2(0, -75)
+base_speed = 75.0
+direction = Vector2(0, -1)
+attack_interval = 2.0
+attack_duration = 0.5
+
+[node name="LaserEnemy2" parent="." instance=ExtResource("3_yfrw0")]
+position = Vector2(0, 75)
+base_speed = 75.0
+attack_interval = 2.0
+attack_duration = 0.5

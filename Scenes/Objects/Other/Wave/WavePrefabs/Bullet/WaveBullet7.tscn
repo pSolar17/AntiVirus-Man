@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://pa8nmpfva4s2"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_1jlul"]
+[ext_resource type="PackedScene" uid="uid://bfc6v8c0d3skc" path="res://Scenes/Objects/Enemies/Bullet/The Shroom/TheShroom.tscn" id="2_7dl8l"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="3_rfcxd"]
+[ext_resource type="PackedScene" uid="uid://bthc83vpt1pxh" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.tscn" id="4_rjcvb"]
+
+[node name="WaveBullet7" type="Node2D"]
+script = ExtResource("1_1jlul")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="TheShroom" parent="." instance=ExtResource("2_7dl8l")]
+
+[node name="Puffer" parent="." instance=ExtResource("3_rfcxd")]
+position = Vector2(0, 96)
+
+[node name="Bloodspitter" parent="." instance=ExtResource("4_rjcvb")]
+position = Vector2(0, -96)
+
+[node name="Bloodspitter2" parent="." instance=ExtResource("4_rjcvb")]
+position = Vector2(0, -96)
+spin_offset = 2.0
+
+[node name="Bloodspitter3" parent="." instance=ExtResource("4_rjcvb")]
+position = Vector2(0, -96)
+spin_offset = 4.0

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://gahhrx5c6oys"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_ebwvd"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="2_08yw2"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="3_ijriq"]
+
+[node name="DemoWave3" type="Node2D"]
+script = ExtResource("1_ebwvd")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserSpinner" parent="." instance=ExtResource("2_08yw2")]
+attack_duration = 24.0
+positions = Array[Vector2]([Vector2(320, 210)])
+
+[node name="Puffer" parent="." instance=ExtResource("3_ijriq")]
+position = Vector2(0, -96)
+base_speed = 120.0
+
+[node name="Puffer2" parent="." instance=ExtResource("3_ijriq")]
+position = Vector2(0, 96)
+base_speed = 120.0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://jgy1sjum86ch"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_c1yq3"]
+[ext_resource type="PackedScene" uid="uid://bfc6v8c0d3skc" path="res://Scenes/Objects/Enemies/Bullet/The Shroom/TheShroom.tscn" id="2_b3m1m"]
+[ext_resource type="PackedScene" uid="uid://c68e0yrjc0cwi" path="res://Scenes/Objects/Enemies/Final/The Shield/TheShield.tscn" id="3_s0owo"]
+
+[node name="WaveObject" type="Node2D"]
+script = ExtResource("1_c1yq3")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="TheShroom" parent="." instance=ExtResource("2_b3m1m")]
+period = 3.0
+
+[node name="TheShield" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_s0owo")]
+position = Vector2(0, -48)
+spin_target = NodePath("../TheShroom")
+spin_interval = 8.0
+
+[node name="TheShield2" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_s0owo")]
+position = Vector2(-48, 0)
+spin_target = NodePath("../TheShroom")
+spin_interval = 8.0
+spin_offset = 2.0
+
+[node name="TheShield3" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_s0owo")]
+position = Vector2(48, 0)
+spin_target = NodePath("../TheShroom")
+spin_interval = 8.0
+spin_offset = 4.0
+
+[node name="TheShield4" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_s0owo")]
+position = Vector2(0, 48)
+spin_target = NodePath("../TheShroom")
+spin_interval = 8.0
+spin_offset = 6.0

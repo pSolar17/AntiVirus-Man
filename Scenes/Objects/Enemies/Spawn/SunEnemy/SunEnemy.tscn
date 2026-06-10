@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvvq0ru6d4pe2"]
+
+[ext_resource type="Script" uid="uid://6cy6ii3feqbw" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunEnemy.gd" id="1_lj7iu"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_8oyix"]
+[ext_resource type="Texture2D" uid="uid://cv0a1gwrv85r2" path="res://Assets/Sprites/sun.png" id="3_hp5jc"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_8oyix"]
+[ext_resource type="PackedScene" uid="uid://bapyc65lrt477" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunSpike.tscn" id="5_hp5jc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_8oyix")
+shader_parameter/enabled = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj7iu"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oyix"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp5jc"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t24r0"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bculp"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a5m3"]
+atlas = ExtResource("3_hp5jc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_doh4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj7iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oyix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp5jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t24r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bculp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a5m3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj7iu"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oyix"]
+size = Vector2(32, 32)
+
+[node name="SunEnemy" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_lj7iu")
+max_health = 250.0
+bounty = 750
+rna_bounty = 375
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+sprite_frames = SubResource("SpriteFrames_doh4l")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lj7iu")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_8oyix")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(32, 0)
+script = ExtResource("4_8oyix")
+scene = ExtResource("5_hp5jc")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true

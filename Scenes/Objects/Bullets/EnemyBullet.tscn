@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc23f6lqen2lm"]
+
+[ext_resource type="Script" uid="uid://c7jftqkrkksc2" path="res://Scenes/Objects/Bullets/Bullet.gd" id="1_xfx71"]
+[ext_resource type="Texture2D" uid="uid://x4ltog0dpl2g" path="res://Assets/Sprites/enemy_bullet.png" id="2_xfx71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfx71"]
+size = Vector2(8, 8)
+
+[node name="EnemyBullet" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_xfx71")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xfx71")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(6.19888e-06, 1.52588e-05)
+scale = Vector2(16, 16)
+rect = Rect2(-16, -16, 32, 32)
+
+[node name="EnemyBullet" type="Sprite2D" parent="."]
+texture = ExtResource("2_xfx71")
+
+[node name="LifeTimer" type="Timer" parent="."]
+one_shot = true

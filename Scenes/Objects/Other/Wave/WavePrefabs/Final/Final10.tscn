@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85d4iple3ohx"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_w2x18"]
+[ext_resource type="PackedScene" uid="uid://dyy72pohe8i25" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/PipeEnemy.tscn" id="2_4xujg"]
+[ext_resource type="PackedScene" uid="uid://bthc83vpt1pxh" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.tscn" id="3_jn0yd"]
+
+[node name="Final10" type="Node2D"]
+script = ExtResource("1_w2x18")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="PipeEnemy" parent="." instance=ExtResource("2_4xujg")]
+
+[node name="Bloodspitter" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+
+[node name="Bloodspitter2" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+spin_offset = 1.0
+
+[node name="Bloodspitter3" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+spin_offset = 2.0
+
+[node name="Bloodspitter4" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+spin_offset = 3.0
+
+[node name="Bloodspitter5" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+shot_interval = 4.0
+
+[node name="Bloodspitter6" parent="." node_paths=PackedStringArray("spin_target") instance=ExtResource("3_jn0yd")]
+position = Vector2(32, 0)
+spin_target = NodePath("../PipeEnemy")
+spin_offset = 5.0

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://mktstb7u40qb"]
+
+[ext_resource type="Script" uid="uid://c7jftqkrkksc2" path="res://Scenes/Objects/Bullets/Bullet.gd" id="1_be1ss"]
+[ext_resource type="Texture2D" uid="uid://bi0kegyw6wpre" path="res://Assets/Sprites/player_bullet.png" id="2_be1ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be1ss"]
+size = Vector2(8, 8)
+
+[node name="PlayerBullet" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_be1ss")
+friendly_fire = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+texture = ExtResource("2_be1ss")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_be1ss")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-7.15256e-07, 4.76837e-07)
+rect = Rect2(-16, -16, 32, 32)
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

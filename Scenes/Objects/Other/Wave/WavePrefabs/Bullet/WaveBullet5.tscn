@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtnlp56l6im0q"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_jeqqw"]
+[ext_resource type="PackedScene" uid="uid://bthc83vpt1pxh" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.tscn" id="2_bceyn"]
+
+[node name="DemoWave12" type="Node2D"]
+script = ExtResource("1_jeqqw")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Bloodspitter" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, -128)
+shot_interval = 2.0
+shot_interval_rfactor = 0.25
+
+[node name="Bloodspitter2" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, -96)
+spin_offset = 1.0
+shot_interval = 2.0
+shot_interval_rfactor = 0.25
+
+[node name="Bloodspitter3" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, -64)
+spin_offset = 2.0
+shot_interval = 2.0
+shot_interval_rfactor = 0.25
+
+[node name="Bloodspitter4" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, 128)
+spin_offset = 3.0
+shot_interval = 2.0
+shot_interval_rfactor = 0.25
+
+[node name="Bloodspitter5" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, 96)
+spin_offset = 4.0
+shot_interval = 2.0
+shot_interval_rfactor = 0.25
+
+[node name="Bloodspitter6" parent="." instance=ExtResource("2_bceyn")]
+position = Vector2(0, 64)
+spin_offset = 5.0
+shot_interval = 2.0
+shot_interval_rfactor = 0.25

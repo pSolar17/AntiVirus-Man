@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhad52xnpnlh7"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_2u11m"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="2_3p33k"]
+[ext_resource type="PackedScene" uid="uid://b5lodka5kba65" path="res://Scenes/Objects/Enemies/Tutorial/TutorialEnemies.tscn" id="3_g3w6t"]
+
+[node name="TutorialWave3" type="Node2D"]
+script = ExtResource("1_2u11m")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Puffer" parent="." instance=ExtResource("2_3p33k")]
+position = Vector2(0, -64)
+initial_direction = Vector2(-1, 1)
+rna_bounty = 250
+
+[node name="Puffer2" parent="." instance=ExtResource("2_3p33k")]
+position = Vector2(0, 64)
+initial_direction = Vector2(-1, -1)
+rna_bounty = 250
+
+[node name="TutorialEnemies" parent="." instance=ExtResource("3_g3w6t")]

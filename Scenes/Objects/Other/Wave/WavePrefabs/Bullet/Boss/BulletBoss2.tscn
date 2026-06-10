@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh1ybuqqs14dr"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_be3c7"]
+[ext_resource type="PackedScene" uid="uid://bthc83vpt1pxh" path="res://Scenes/Objects/Enemies/Bullet/BloodSpitter/Bloodspitter.tscn" id="2_nh5nw"]
+
+[node name="BulletBoss2" type="Node2D"]
+script = ExtResource("1_be3c7")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="BloodspitterBoss" parent="." instance=ExtResource("2_nh5nw")]
+scale = Vector2(3, 3)
+spin_radius = 128.0
+shot_interval = 0.3
+bullet_speed = 32.0
+shot_interval_rfactor = 0.2
+max_health = 300.0
+bounty = 3750
+rna_bounty = 2500
+dna_bounty = 100
+is_boss = true

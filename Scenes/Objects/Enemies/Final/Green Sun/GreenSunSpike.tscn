@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://dcte3lmidxy2d"]
+
+[ext_resource type="Script" uid="uid://dfdvhwe7d02d8" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunSpike.gd" id="1_l7j3g"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_8ylog"]
+[ext_resource type="Texture2D" uid="uid://da7odmysqdyuq" path="res://Assets/Sprites/SunSpikeFinal.png" id="3_mpvk0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_8ylog")
+shader_parameter/enabled = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt7gs"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56hhp"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75mp0"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83144"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q521e"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tr2n"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqq1b"]
+atlas = ExtResource("3_mpvk0")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgnpd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt7gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56hhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75mp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83144")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q521e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tr2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqq1b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpvk0"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt7gs"]
+size = Vector2(8, 8)
+
+[node name="GreenSunSpike" type="CharacterBody2D"]
+process_mode = 1
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_l7j3g")
+speed = 360.0
+max_health = 9999.0
+bounty = 0
+rna_bounty = 0
+contact_damage = 40.0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_sgnpd")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mpvk0")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_rt7gs")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-64, -64, 128, 128)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

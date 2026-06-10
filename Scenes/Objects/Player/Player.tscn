@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://ipofvvfvia4s"]
+
+[ext_resource type="Script" uid="uid://cyy5ws5lqk5cf" path="res://Scenes/Objects/Player/Player.gd" id="1_e8vge"]
+[ext_resource type="Texture2D" uid="uid://bo3d6usv4m2uy" path="res://Assets/Sprites/avman_sprsheet.png" id="2_e8vge"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_k1a7i"]
+[ext_resource type="AudioStream" uid="uid://bqb7sq2acclv7" path="res://Assets/Audio/Sounds/PlayerShoot.wav" id="4_l5y80"]
+[ext_resource type="AudioStream" uid="uid://bnom6gvckrw6d" path="res://Assets/Audio/Sounds/Hit.wav" id="5_kvi7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6org"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8vge"]
+size = Vector2(48, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5y80"]
+shader = ExtResource("2_k1a7i")
+shader_parameter/enabled = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1a7i"]
+atlas = ExtResource("2_e8vge")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5y80"]
+atlas = ExtResource("2_e8vge")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvi7n"]
+atlas = ExtResource("2_e8vge")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8vge"]
+atlas = ExtResource("2_e8vge")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ay8ch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1a7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5y80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvi7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8vge")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+process_mode = 1
+z_index = 1
+collision_mask = 520
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_e8vge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l6org")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(22, 1)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_mask = 514
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+shape = SubResource("RectangleShape2D_e8vge")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_l5y80")
+sprite_frames = SubResource("SpriteFrames_ay8ch")
+autoplay = "default"
+frame = 1
+frame_progress = 0.542912
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l5y80")
+volume_db = -10.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kvi7n")
+volume_db = 5.0

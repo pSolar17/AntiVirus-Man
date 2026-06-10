@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfc6v8c0d3skc"]
+
+[ext_resource type="Script" uid="uid://cgomsjlkermin" path="res://Scenes/Objects/Enemies/Bullet/The Shroom/TheShroom.gd" id="1_2lpbh"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_8iybe"]
+[ext_resource type="Texture2D" uid="uid://c1enk3by72oqh" path="res://Assets/Sprites/TheShroom.png" id="3_6tf83"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_idigv"]
+[ext_resource type="PackedScene" uid="uid://cc23f6lqen2lm" path="res://Scenes/Objects/Bullets/EnemyBullet.tscn" id="5_cnvg3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_8iybe")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxybe"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhr7j"]
+size = Vector2(32, 32)
+
+[node name="TheShroom" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_2lpbh")
+max_health = 175.0
+bounty = 600
+rna_bounty = 300
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+texture = ExtResource("3_6tf83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xxybe")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_yhr7j")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(0, -8)
+script = ExtResource("4_idigv")
+scene = ExtResource("5_cnvg3")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="Spawner2" type="Node2D" parent="."]
+position = Vector2(0, -12)
+script = ExtResource("4_idigv")
+scene = ExtResource("5_cnvg3")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="Spawner3" type="Node2D" parent="."]
+position = Vector2(0, 8)
+script = ExtResource("4_idigv")
+scene = ExtResource("5_cnvg3")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="Spawner4" type="Node2D" parent="."]
+position = Vector2(0, 12)
+script = ExtResource("4_idigv")
+scene = ExtResource("5_cnvg3")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="MovementTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5br2jtulrism"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_ykmj3"]
+[ext_resource type="PackedScene" uid="uid://bvvq0ru6d4pe2" path="res://Scenes/Objects/Enemies/Spawn/SunEnemy/SunEnemy.tscn" id="2_b4su7"]
+
+[node name="TestWaveSun" type="Node2D"]
+script = ExtResource("1_ykmj3")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="SunEnemy" parent="." instance=ExtResource("2_b4su7")]
+position = Vector2(0, -96)
+
+[node name="SunEnemy2" parent="." instance=ExtResource("2_b4su7")]
+position = Vector2(0, 96)

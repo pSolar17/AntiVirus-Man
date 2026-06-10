@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqvy4lwvk7mjm"]
+
+[ext_resource type="Script" uid="uid://cbx3pprgcvx8n" path="res://Scenes/Objects/Bullets/Laser/LaserBullet.gd" id="1_8pdp2"]
+[ext_resource type="Texture2D" uid="uid://dhdpba8hdabir" path="res://Assets/Sprites/laser1_sprsheet.png" id="2_4k4h7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0x2n"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4yet"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0l3q"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26xq6"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bthm"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(48, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiwsw"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(32, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djdfr"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(16, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmlh0"]
+atlas = ExtResource("2_4k4h7")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1grou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0x2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4yet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0l3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26xq6")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bthm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiwsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djdfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmlh0")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpl3t"]
+size = Vector2(16, 8)
+
+[node name="LaserBullet" type="Node2D"]
+script = ExtResource("1_8pdp2")
+base_speed = 0.0
+destroy_on_contact = false
+
+[node name="LaserSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1)
+sprite_frames = SubResource("SpriteFrames_1grou")
+animation = &"destroy"
+autoplay = "spawn"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dpl3t")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-320, -180, 640, 360)
+
+[node name="LifeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_timer_timeout"]

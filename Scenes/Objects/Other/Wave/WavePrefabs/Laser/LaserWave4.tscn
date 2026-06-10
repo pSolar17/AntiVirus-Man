@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj17oc6krkiq6"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_jywu8"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="2_s5tw7"]
+[ext_resource type="PackedScene" uid="uid://bt1bj6gm1va65" path="res://Scenes/Objects/Enemies/Laser/LaserPuffer/LaserPuffer.tscn" id="3_sj6kc"]
+
+[node name="LaserWave4" type="Node2D"]
+script = ExtResource("1_jywu8")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="LaserSpinner" parent="." instance=ExtResource("2_s5tw7")]
+
+[node name="LaserPuffer" parent="." instance=ExtResource("3_sj6kc")]
+laser_duration = 1.0

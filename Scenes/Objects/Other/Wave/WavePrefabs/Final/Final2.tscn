@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqdhued4w0pvl"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_g2hdy"]
+[ext_resource type="PackedScene" uid="uid://utf2chgch6la" path="res://Scenes/Objects/Enemies/Final/Green Sun/GreenSun.tscn" id="2_88j0u"]
+[ext_resource type="PackedScene" uid="uid://dtxpv10ferfit" path="res://Scenes/Objects/Enemies/Bullet/Puffer/Puffer.tscn" id="3_88j0u"]
+
+[node name="Final2" type="Node2D"]
+script = ExtResource("1_g2hdy")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="GreenSun" parent="." instance=ExtResource("2_88j0u")]
+
+[node name="Puffer" parent="." instance=ExtResource("3_88j0u")]
+position = Vector2(0, -64)
+
+[node name="Puffer2" parent="." instance=ExtResource("3_88j0u")]
+position = Vector2(0, 64)

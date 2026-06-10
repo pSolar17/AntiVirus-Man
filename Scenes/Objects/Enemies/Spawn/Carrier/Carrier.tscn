@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkdyrltywwtd0"]
+
+[ext_resource type="Script" uid="uid://c1n6odyxlejhs" path="res://Scenes/Objects/Enemies/Spawn/Carrier/Carrier.gd" id="1_nmggf"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_o1umt"]
+[ext_resource type="Texture2D" uid="uid://xo5fhyutkmqb" path="res://Assets/Sprites/carrier.png" id="3_nmggf"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_o1umt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qon0"]
+resource_local_to_scene = true
+shader = ExtResource("2_o1umt")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmggf"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1umt"]
+size = Vector2(32, 32)
+
+[node name="Carrier" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_nmggf")
+max_health = 150.0
+bounty = 500
+rna_bounty = 250
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8qon0")
+texture = ExtResource("3_nmggf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nmggf")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_o1umt")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(0, -10)
+script = ExtResource("4_o1umt")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

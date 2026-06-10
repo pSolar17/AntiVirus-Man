@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyy72pohe8i25"]
+
+[ext_resource type="Script" uid="uid://da1ivt7fts5nb" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/PipeEnemy.gd" id="1_7br4w"]
+[ext_resource type="Shader" uid="uid://c4bfgb780020f" path="res://Assets/Shaders/Negative.gdshader" id="2_gb4td"]
+[ext_resource type="Texture2D" uid="uid://tnkrjo2ncw4o" path="res://Assets/Sprites/mariopipe.png" id="3_v0q3o"]
+[ext_resource type="Script" uid="uid://b3tlhpydym7bn" path="res://Scenes/Objects/Other/Spawner/Spawner.gd" id="4_gb4td"]
+[ext_resource type="PackedScene" uid="uid://br17uroqmmyey" path="res://Scenes/Objects/Enemies/Spawn/PipeEnemy/CoinFlipper.tscn" id="5_v0q3o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0nwv"]
+resource_local_to_scene = true
+shader = ExtResource("2_gb4td")
+shader_parameter/enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb4td"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0q3o"]
+size = Vector2(32, 32)
+
+[node name="PipeEnemy" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 264
+script = ExtResource("1_7br4w")
+max_health = 150.0
+bounty = 750
+rna_bounty = 375
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g0nwv")
+texture = ExtResource("3_v0q3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gb4td")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_v0q3o")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(-16, 0)
+script = ExtResource("4_gb4td")
+scene = ExtResource("5_v0q3o")
+metadata/_custom_type_script = "uid://b3tlhpydym7bn"
+
+[node name="BatchTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="BatchTimer" to="." method="_on_batch_timer_timeout"]

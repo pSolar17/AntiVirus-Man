@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddk3wb73fk5r2"]
+
+[ext_resource type="Script" uid="uid://cnp25sfp5uvso" path="res://Scenes/Objects/Other/Wave/Wave.gd" id="1_lmw5t"]
+[ext_resource type="PackedScene" uid="uid://bkdyrltywwtd0" path="res://Scenes/Objects/Enemies/Spawn/Carrier/Carrier.tscn" id="2_d3s4v"]
+[ext_resource type="PackedScene" uid="uid://dv461v3luo3hg" path="res://Scenes/Objects/Enemies/Laser/LaserSpinner/LaserSpinner.tscn" id="3_g4bnm"]
+
+[node name="Final5" type="Node2D"]
+script = ExtResource("1_lmw5t")
+metadata/_custom_type_script = "uid://cnp25sfp5uvso"
+
+[node name="Carrier" parent="." instance=ExtResource("2_d3s4v")]
+
+[node name="LaserSpinner" parent="." instance=ExtResource("3_g4bnm")]

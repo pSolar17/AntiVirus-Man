@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://chfrveed8okud"]
+
+[ext_resource type="Theme" uid="uid://cnib22hkf1qb1" path="res://Assets/Themes/MissionUITheme.tres" id="2_iqyig"]
+
+[sub_resource type="GDScript" id="GDScript_e526j"]
+script/source = "extends Enemy
+
+func _ready() -> void:
+	super._ready()
+	
+	$CanvasLayer/Control/ButtonGood.grab_focus()
+
+func _physics_process(delta: float) -> void:
+	pass
+
+func _on_button_pressed():
+	if $Timer.time_left > 0.0:
+		return
+	
+	var button : Button = $CanvasLayer/Control/ButtonGood
+	if button.has_focus():
+		$CanvasLayer/Control/ButtonGood.hide()
+		$CanvasLayer/Control/ButtonBad.hide()
+		$CanvasLayer/Control/Label.text = \"CORRECT ANSWER!\"
+	else:
+		$CanvasLayer/Control/ButtonGood.hide()
+		$CanvasLayer/Control/ButtonBad.hide()
+		$CanvasLayer/Control/Label.text = \"WRONG ANSWER! YOU MAY WANT TO RETHINK IT WHILE PLAYING.\"
+		GameManager.player.take_damage(100.0)
+	
+	await get_tree().create_timer(5.0).timeout
+	die()
+"
+
+[sub_resource type="InputEventKey" id="InputEventKey_xo6kj"]
+device = -1
+keycode = 90
+unicode = 122
+
+[sub_resource type="Shortcut" id="Shortcut_g54ma"]
+events = [SubResource("InputEventKey_xo6kj")]
+
+[node name="TutorialChoice" type="CharacterBody2D"]
+script = SubResource("GDScript_e526j")
+bounty = 0
+rna_bounty = 0
+metadata/_custom_type_script = "uid://bwa4ix5q7fwfd"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme = ExtResource("2_iqyig")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 248.0
+offset_right = 640.0
+offset_bottom = 344.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 288.0
+text = "ARE YOU ENJOYING THE GAME SO FAR?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonGood" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 304.0
+offset_right = 268.0
+offset_bottom = 335.0
+action_mode = 0
+shortcut = SubResource("Shortcut_g54ma")
+text = "IT'S GOOD!"
+flat = true
+
+[node name="ButtonBad" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 304.0
+offset_right = 480.0
+offset_bottom = 335.0
+action_mode = 0
+shortcut = SubResource("Shortcut_g54ma")
+text = "IT SUCKS"
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="CanvasLayer/Control/ButtonGood" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ButtonBad" to="." method="_on_button_pressed"]
