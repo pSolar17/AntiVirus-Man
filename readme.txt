@@ -1,10 +1,12 @@
-# --- ANTIVIRUS MAN ---#
+# --- ANTIVIRUS MAN --- #
 
 Created as a part of OWG 3 @ 2ch.hk/gd
 
 Made by Sunriser17
 
-# -------------------- #
+PLAY AT: https://sunriser17.itch.io/antivirus-man
+
+# --------------------- #
 
 Controls:
 
@@ -19,7 +21,7 @@ Numpad -/Page Down - Volume DOWN
 Numpad Enter/Home - Volume MAX
 M - Mute/Unmute
 
-# -------------------- #
+# --------------------- #
 
 How to play:
 
@@ -27,7 +29,7 @@ Defeat enemies
 Don't die 4Head
 Grow your virus strains in lab and become more powerful(hopefully)
 
-# -------------------- #
+# --------------------- #
 
 Credits:
 	Graphics:
