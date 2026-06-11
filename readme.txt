@@ -44,6 +44,6 @@ Credits:
 		Hirokazu Tanaka — NES Metroid Brinstar theme
 		Nigel Broad, Scott Kluesner — Breakdown (a.k.a. Super Kazuya theme) (Atari 5200 remix by JXChip @ www.youtube.com/@JXChip)
 		Yasunori Mitsuda — Undersea Palace (Chrono Trigger OST)
-		Yasunori Mitsude — World Revolution (Chrono Trigger OST)
+		Yasunori Mitsuda — World Revolution (Chrono Trigger OST)
 
 	Huge shoutout to all the great games I've played throughout all these years!
